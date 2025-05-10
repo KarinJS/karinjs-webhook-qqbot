@@ -1,5 +1,5 @@
 {
-  "name": "@karinjs/plugin-webhook-qqbot",
+  "name": "@karinjs/create-qqbot-webhook",
   "version": "0.0.1",
   "author": "shijin",
   "description": "karin plugin qqbot webhook",
@@ -11,44 +11,35 @@
     "type": "git",
     "url": "git+https://github.com/KarinJS/karin-plugin-webhook-qqbot.git"
   },
+  "bin": {
+    "create-qqbot-webhook": "./create.js"
+  },
   "scripts": {
-    "build": "tsup src/index.ts --out-dir lib --format esm",
+    "build": "tsc && tsup",
     "pub": "npm publish --access public"
   },
-  "main": "lib/index.mjs",
-  "module": "lib/index.mjs",
-  "exports": {
-    ".": {
-      "import": "./lib/index.mjs",
-      "types": "./lib/index.d.ts"
-    }
-  },
+  "main": "dist/index.js",
   "devDependencies": {
     "@types/express": "^4.17.13",
     "@types/node": "^20.17.9",
     "@types/ws": "^8.5.13",
+    "axios": "^1.9.0",
     "eslint": "^9.7.0",
+    "express": "^4.21.1",
+    "log4js": "^6.9.1",
     "neostandard": "^0.11.9",
     "tsup": "^8.3.5",
     "tsx": "^4.19.2",
-    "typescript": "^5.5.3"
+    "tweetnacl": "^1.0.3",
+    "typescript": "^5.5.3",
+    "ws": "^8.18.0"
   },
   "files": [
-    "/lib/**/*.js",
-    "/lib/**/*.d.ts",
-    "LICENSE",
-    "package.json",
-    "README.md"
+    "dist",
+    "create.js"
   ],
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
-  },
-  "dependencies": {
-    "express": "^4.21.1",
-    "got": "13.0.0",
-    "log4js": "^6.9.1",
-    "tweetnacl": "^1.0.3",
-    "ws": "^8.18.0"
   }
 }

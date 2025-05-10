@@ -1,4 +1,4 @@
-import got from 'got'
+import axios from 'axios'
 import { logger } from './logger'
 import { getBot, getPush } from './config'
 import type { WebSocket, WebSocketServer } from 'ws'
@@ -66,7 +66,7 @@ export const webhook = async (req: Request, res: Response) => {
     const task: Promise<any>[] = []
 
     for (const api of list.http) {
-      const result = got.post(api.push, {
+      const result = axios.post(api.push, {
         headers: Object.assign(req.headers, { authorization: api.push_token }),
         json: data.body,
         timeout: { request: 2000 }
@@ -189,7 +189,7 @@ export const getSginHttp = async (
   plainToken: string
 ): Promise<string> => {
   try {
-    const result = await got.post(`${url}/sign`, {
+    const result = await axios.post(`${url}/sign`, {
       headers: {
         'user-agent': 'QQBot-Callback',
         'x-bot-appid': appid,
@@ -199,7 +199,12 @@ export const getSginHttp = async (
     })
 
     // 返回的是一个json { code: 0, sgin: 'xxxx' }
-    return JSON.parse(result.body).sgin
+    if (result.data.status === 'error') {
+      logger.error(`[sign][http] 请求错误，签名失败，请检查Bot端是否正常: ${url}`)
+      throw new Error(result.data.message)
+    }
+
+    return result.data.message
   } catch (error) {
     logger.error(`[sign][http] 请求错误，签名失败，请检查Bot端是否正常: ${url}`)
     throw error

@@ -24,7 +24,7 @@ const config: {
   ws: Ws[],
   http: Http[],
 } = loadConfig(filePath, {
-  port: 7777,
+  port: 7779,
   host: '0.0.0.0',
   http: [],
   ws: [],
@@ -47,11 +47,6 @@ export const setBlacklist = (ip: string) => {
 for (const ws of config.ws) {
   if (!list[ws.appid]) list[ws.appid] = { http: [], ws: [] }
   list[ws.appid].ws.push(ws)
-}
-
-for (const http of config.http) {
-  if (!list[http.appid]) list[http.appid] = { http: [], ws: [] }
-  list[http.appid].http.push(http)
 }
 
 /**

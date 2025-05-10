@@ -1,3 +1,37 @@
+# @karinjs/plugin-webhook-qqbot
+
+karin plugin qqbot webhook
+
+## 快速开始
+
+```bash
+npx @karinjs/plugin-webhook-qqbot
+```
+
+### 创建新项目
+
+执行以下命令，按照提示操作即可快速创建一个新项目：
+
+```bash
+npx @karinjs/plugin-webhook-qqbot
+```
+
+- 你会被询问项目目录名称
+- 工具会自动检查目录是否存在
+- 自动初始化 package.json
+- 自动复制必要文件
+- 可选择是否安装额外依赖
+- 最后会提示如何启动项目
+
+## 启动项目
+
+创建完成后，进入项目目录并启动：
+
+```bash
+cd 你的项目目录
+node .
+```
+
 # test
 
 `op: 0`:

@@ -6,3 +6,4 @@ config.json
 lib
 pnpm-lock.yaml
 sign.mjs
+/dist
