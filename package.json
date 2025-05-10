@@ -1,6 +1,6 @@
 {
   "name": "@karinjs/create-qqbot-webhook",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "shijin",
   "description": "karin plugin qqbot webhook",
   "homepage": "https://github.com/KarinJS/karin-plugin-webhook-qqbot",
